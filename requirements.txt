@@ -2,5 +2,3 @@ pandas
 
 #security pass API
 getpass
-
-Flask==2.1.0
