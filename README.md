@@ -1,5 +1,7 @@
 # Final Project: Stock Momentum Indicator
 
+talk about why we did this idea! 
+
 ## Steps to Run:
 
 1. Navigate via web browser to the [repository](https://github.com/abhinavchandrav/2335freestyleproj)
@@ -24,19 +26,12 @@ conda create -n momentum-indicator-env
 ```sh 
 conda activate momentum-indicator-env
 ```
+7. Install the required packages: 
 
-7. Import percent formatting using:
-
-def to_pct(my_number):
-    return f"{(my_number * 100):.2f}%"
-
-8. Enable secure API usage using:
-
-from getpass import getpass
-api_key = getpass("Please input your AlphaVantage API Key: ")
-
-
-9. Import and configure the necessary pandas packages using:
+```sh
+pip install -r requirements.txt
+```
+8. Import and configure the necessary pandas packages using:
 
 from pandas import read_csv
 import pandas as pd
@@ -46,3 +41,9 @@ import pandas as pd
 ```sh
 python momentum.py
 ```
+
+10. When prompted, enter the desired ticker symbol
+
+## Testing 
+
+pytest

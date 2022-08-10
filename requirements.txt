@@ -1,4 +1,3 @@
 pandas
-
-#security pass API
-getpass
+python-dotenv
+pytest
