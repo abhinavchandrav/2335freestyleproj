@@ -1,3 +1,9 @@
+
 pandas
+
+# Needed to pread the API key from .env and add to the environment variable.  
+# Allows us to securly use the API key! 
 python-dotenv
+
+# Allows us to run test scripts with a simple comand 
 pytest
