@@ -47,31 +47,49 @@ pip install -r requirements.txt
 2. Run the program:
 
 ```sh
-python main.py
+python start.py
 ```
 
 3. When prompted, enter your desired ticker symbol.  If you ticker symbol is valid, you will learn if the stock has positive or negative momentum and recieve a recommendation on your investment.  If your ticket symbol is invalid, you will be notified as such. 
 
 ## Demo
 
-Here is a demo output of a valid ticker symbol:
+Here is a demo output of a valid ticker symbol with POSITIVE momentum:
 
     Please enter a ticker:TSLA
+    --------------------------------------------
     2022-08-10 adjusted close price: $883.07
     2021-08-11 adjusted close price: $707.82
-    percent change in TSLA 24.759119550168123
-    Treasury yield is 1.33
-    TSLA has positive momentum.
+    Percent change in TSLA: 24.76%
+    --------------------------------------------
+    2021-08-11 Treasury yield is: 1.25%
+    --------------------------------------------
+    TSLA has POSITIVE momentum.
     Recommendation: Invest in TSLA
+    --------------------------------------------
+
+Here is a demo output of a valid ticker symbol with NEGATIVE momentum:
+
+    Please enter a ticker:DIS
+    --------------------------------------------
+    2022-08-10 adjusted close price: $112.43
+    2021-08-11 adjusted close price: $178.09
+    Percent change in DIS: -36.87%
+    --------------------------------------------
+    2021-08-11 Treasury yield is: 1.25%
+    --------------------------------------------
+    DIS has NEGATIVE momentum.
+    Recommendation: Invest in Treasury Bills
+    --------------------------------------------
 
 Here is a demo output of an invalid ticker symbol:
 
-    Please enter a ticker:lkhljk
-    OPPS! That ticker is not available.  Please check your symbol and try again.
+    Please enter a ticker:hjkl;
+    The ticker you have entered is invalid.  Please check your ticker and try again.
 
 ## Testing 
 
-There is testing available for the symbol input to ensure valid and invalid symbols are handled appropriately.  This testing is applicable for the API calls ensuring a csv file is recieved and the user input of a ticket symbol. 
+There is testing available for the symbol input to ensure valid and invalid symbols are handled appropriately.  This also tests the API calls as a valid symbol is needed to return the corresponding csv file. 
 
 ```sh 
 pytest
