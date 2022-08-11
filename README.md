@@ -7,6 +7,8 @@ This is an easy to use Stock Momentum Inidcator to help investors, or individual
 
 Simply put, if a stock has Positive Momentum, you will likely be better off investing in the stock than a Treasury bill (a "safe" investment).  
 
+The yield data is from Treasury bills with a 1 year maturity. 
+
 *Assumption: Momentum is indicative of future returns*
 
 ## Set Up
