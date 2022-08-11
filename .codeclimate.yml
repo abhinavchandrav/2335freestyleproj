@@ -1,3 +1,5 @@
+# This allows us to check for duplicate code with Code Climate 
+# Provided by Professor Rossetti
 # this is the ".codeclimate.yml" file (in the root directory of your repo)
 #
 # see: https://docs.codeclimate.com/docs/duplication-concept
