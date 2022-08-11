@@ -38,7 +38,7 @@ load_dotenv()
 
 # -----------------------------------------------------------
 
-def stock_momentum_report(df, t_df, symbol = "NFLX"):
+def stock_momentum_report(df, t_df, symbol):
     print("--------------------------------------------")
 
     latest_close = df.iloc[0]["adjusted_close"]
