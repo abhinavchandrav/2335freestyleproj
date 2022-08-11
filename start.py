@@ -1,5 +1,6 @@
 # This file should be used to run the Stock Momentum Indicator Dashboard
 
-from run import input_stock
+
+import run
 symbol = input(("Please enter a ticker:")) 
-input_stock(symbol)
+run.input_stock(symbol)
