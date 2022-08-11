@@ -14,7 +14,7 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" 
 
 # Set Up - Percent formatting 
-# Code provided by Professor Rossetti
+# Initial code provided by Professor Rossetti - small changes made 
 
 def to_pct(my_number):
     """
@@ -24,7 +24,7 @@ def to_pct(my_number):
     
     Returns (str) like '95.5556%'
     """
-    return f"{(my_number * 100):.4f}%"
+    return f"{(my_number):.2f}%"
 
 # -----------------------------------------------------------
 
@@ -33,42 +33,41 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 # -----------------------------------------------------------
 
 def stock_momentum_report(df, t_df, symbol = "NFLX"):
-    # api_key = os.getenv("api_key")
-    # t_csv_filepath = f"https://www.alphavantage.co/query?function=TREASURY_YIELD&interval=daily&maturity=1year&apikey={api_key}&datatype=csv"
-    # t_df = read_csv(t_csv_filepath)
-    # csv_filepath = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol.upper()}&outputsize=full&apikey={api_key}&datatype=csv"
-    # df = read_csv(csv_filepath)
-     
+    print("--------------------------------------------")
+
     latest_close = df.iloc[0]["adjusted_close"]
-    # The stock market is open for 252 days in the US - use 251 to pull the data from a year prior on this day
+    # The stock market is open for 252 days in the US
+    # Use 251 to pull the data from a year prior 
     earliest_close = df.iloc[251]["adjusted_close"]
     print(df["timestamp"][0], "adjusted close price:", to_usd(latest_close))
     print(df["timestamp"][251], "adjusted close price:", to_usd(earliest_close))
+    
     p_change = ((latest_close - earliest_close) / earliest_close) * 100
-    print("percent change in", symbol, (p_change))
-    #print(t_df)
-    #print(len(t_df))
+    print(f"Percent change in {symbol}: {to_pct(p_change)}")
+
+    print("--------------------------------------------")
+    
     t_df.replace(".", float("NaN"), inplace=True)
     t_df.dropna(inplace = True) 
-    #print(len(t_df))
-    # 261 weekdays in a year and 11 holidays for the FED. 250 days of treasury yield data per year 
-    t_yield = t_df.iloc[249]["value"]
-    print("Treasury yield is", (t_yield))
-    #print(type(t_yeild))
-    #print(type(p_change))
+
+    # Treasury yield data is published 260 days of the year to account for weekends and holidays 
+    # Use 259 to pull the data from a year prior
+    t_yield = t_df.iloc[259]["value"]
+    print(t_df["timestamp"][259], f"Treasury yield is: {t_yield}%")
+
+    print("--------------------------------------------")
+
     if p_change > float(t_yield):
-        print(f"{symbol.upper()} has positive momentum.")
+        print(f"{symbol.upper()} has POSITIVE momentum.")
         print(f"Recommendation: Invest in {symbol.upper()}")
     else:
-        print(f"{symbol.upper()} has negative momentum.")
+        print(f"{symbol.upper()} has NEGATIVE momentum.")
         print("Recommendation: Invest in Treasury Bills")
     
-
-#symbol = input(("Please enter a ticker:"))
-
-#stock_momentum_report(symbol)
+    print("--------------------------------------------")
