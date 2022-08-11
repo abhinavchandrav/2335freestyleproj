@@ -23,6 +23,6 @@ def input_stock(symbol):
         stock_momentum_report(df,t_df,symbol)
 
     except KeyError:
-        print("The ticker you have entered is not a valid ticker.  Please check your ticker and try again.")
-        return "The ticker you have entered is not a valid ticker.  Please check your ticker and try again."
+        print("The ticker you have entered is invalid.  Please check your ticker and try again.")
+        return "The ticker you have entered is invalid.  Please check your ticker and try again."
     return "Valid"
